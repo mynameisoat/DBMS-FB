@@ -8,8 +8,8 @@ var fs = require('fs');
 var http = require('http');
 var https = require('https');
 //var privateKey  = fs.readFileSync(path.resolve('server/key.pem', 'utf8'));
-var privateKey  = fs.readFileSync(__dirname + '/server.key', 'utf8');
-var certificate = fs.readFileSync(__dirname + '/server.crt', 'utf8');
+var privateKey  = fs.readFileSync(__dirname + '/privkey.pem', 'utf8');
+var certificate = fs.readFileSync(__dirname + '/fullchain.pem', 'utf8');
 var credentials = {key: privateKey, cert: certificate};
 const app = express();
 
@@ -19,9 +19,9 @@ app.use(body());
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
 
 const db = mysql.createConnection({
-    host: '172.18.192.1',
+    host: '127.0.0.1',
     user: 'oat',
-    password: '5555',
+    password: '1212312121.',
     database: 'oat-dataserver'
 });
 // show data
