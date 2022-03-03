@@ -73,7 +73,7 @@ app.get('/villages', function(req,res){
 //delete
 app.put('/delete', function(req, res) {
     var sql = 'DELETE FROM users WHERE id = ?';
-    db.query(sql,[req.body.idkey],function (error, results) {
+    db.query(sql,[req.body.id],function (error, results) {
         if(error) throw error;
         res.send(JSON.stringify(results));
     });

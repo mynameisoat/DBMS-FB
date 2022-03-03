@@ -131,13 +131,13 @@ class Register extends Component {
                     <div className="row">
                         <div className="col-md">
                             <div className="form-group">
-                                <label className="text-white">ชื่อ</label>
+                                <label className="text-white">Name</label>
                                 <input type="text" className="form-control" id="firstname" onChange={this.handleChang} value={this.state.firstname}/>
                             </div>
                         </div>
                         <div className="col-md">
                             <div className="form-group">
-                                <label className="text-white">นามสกุล</label>
+                                <label className="text-white">Lastname</label>
                                 <input type="text" className="form-control" id="lastname" onChange={this.handleChang} value={this.state.lastname}/>
                             </div>
                         </div>
@@ -145,7 +145,7 @@ class Register extends Component {
                     <div className="row">
                         <div className="col-md">
                             <div className="form-group">
-                                <label className="text-white">เบอร์โทรศัพท์</label>
+                                <label className="text-white">Phone</label>
                                 <input type="text" className="form-control" id="phonenum" onChange={this.handleChang} value={this.state.phonenum}/>
                             </div>
                         </div>
@@ -153,7 +153,7 @@ class Register extends Component {
                     <div className="row">
                         <div className="col-md">
                             <div className="form-group">
-                                <label className="text-white">หมู่บ้าน</label>
+                                <label className="text-white">Village</label>
                                 <select className="form-control" id="village" onChange={this.handleChang} >
                                     <option value={0}></option>
                                     {
@@ -168,7 +168,7 @@ class Register extends Component {
                         </div>
                         <div className="col-md">
                             <div className="form-group">
-                                <label className="text-white">ตำบล</label>
+                                <label className="text-white">Subdistrict</label>
                                 <select className="form-control" id="subdistrict" onChange={this.handleChang} >
                                     <option value={0}></option>
                                     {
@@ -183,7 +183,7 @@ class Register extends Component {
                         </div>
                         <div className="col-md">
                             <div className="form-group">
-                                <label className="text-white">อำเภอ</label>
+                                <label className="text-white">District</label>
                                 <select className="form-control" id="district" onChange={this.handleChang} >
                                     <option value={0}></option>
                                     {
@@ -198,7 +198,7 @@ class Register extends Component {
                         </div>
                         <div className="col-md">
                             <div className="form-group">
-                                <label className="text-white">จังหวัด</label>
+                                <label className="text-white">Province</label>
                                 <select className="form-control" id="province" onChange={this.handleChang}>
                                     <option value={0}></option>
                                     {
@@ -212,7 +212,7 @@ class Register extends Component {
                             </div>
                         </div>
                     </div>
-                    <button type="button" className="btn btn-primary" onClick={this.handleClicked}>บันทึก</button>
+                    <button type="button" className="btn btn-primary" onClick={this.handleClicked}>Save</button>
                 </form>
             </div>
         );

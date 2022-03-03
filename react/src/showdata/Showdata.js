@@ -50,7 +50,7 @@ export default class Showdata extends Component{
     }
 
     onDelete=(user)=>{
-        const result = window.confirm(`จะลบข้อมูล ${user.firstname} ${user.lastname} ใช่หรือไม่?`);
+        const result = window.confirm(`You can Delete ${user.firstname} ${user.lastname} ?`);
         if (result) {
             let url = `${this._baseURL}/delete`;
             let data = {
@@ -157,12 +157,12 @@ export default class Showdata extends Component{
 
     getDateTimeFormatted = (data) => {
         const date = new Date(data);
-        const resultDate = date.toLocaleDateString('th-TH', {
+        const resultDate = date.toLocaleDateString('en-US', {
             year: 'numeric',
             month: 'long',
             day: 'numeric',
         });
-        const resultTime = date.toLocaleTimeString('th-TH', {
+        const resultTime = date.toLocaleTimeString('en-US', {
             hour: '2-digit',
             minute: '2-digit',
         });
@@ -201,18 +201,18 @@ export default class Showdata extends Component{
 
         return (
             <div className="App">
-                <h2 className="my-4">Users Information <div>จำนวนทั้งหมด {this.state.list.length} รายการ</div></h2>
+                <h2 className="my-4">Users Information <div>Total {this.state.list.length} Item</div></h2>
                 <hr/>
                 <div className="container p-3 my-3 bg-light text-black">
                     <table className="table table-light">
                         <thead>
                             <tr>
-                                {/* <th>ไอดี</th>
-                                <th>ชื่อ - นามสกุล</th> */}
-                                {/* <th>รายละเอียด</th> */}
-                                {/* <th>นำเข้าข้อมูลโดย</th> */}
-                                {/* <th>ปรับปรุงล่าสุด</th> */}
-                                {/* <th>จัดการข้อมูล</th> */}
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Detail</th>
+                                <th>Create By</th>
+                                <th>Update on</th>
+                                <th>Manage Menu</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -222,16 +222,16 @@ export default class Showdata extends Component{
                                             <td>{user.id}</td>
                                             <td>{user.firstname} {user.lastname}</td>
                                             <td>
-                                                {/* <ul className="text-left">
-                                                    <li>เบอร์โทรศัพท์ {user.phonenum}</li>
-                                                    <li>หมู่บ้าน {user.villageName}</li>
-                                                    <li>ตำบล {user.subdistrictName}</li>
-                                                    <li>อำเภอ {user.districtName}</li>
-                                                    <li>จังหวัด {user.provinceName}</li>
-                                                </ul> */}
+                                                <ul className="text-left">
+                                                    <li><b>Phone:</b> {user.phonenum}</li>
+                                                    <li><b>Village:</b> {user.villageName}</li>
+                                                    <li><b>Sub-District:</b> {user.subdistrictName}</li>
+                                                    <li><b>District:</b> {user.districtName}</li>
+                                                    <li><b>Province:</b> {user.provinceName}</li>
+                                                </ul>
                                             </td>
                                             <td>{user.Regisby}</td>
-                                            {/* <td>{this.getDateTimeFormatted(user.regisTime)}</td> */}
+                                            <td>{this.getDateTimeFormatted(user.regisTime)}</td>
                                             <td>
                                                 <button type="button" class="btn btn-warning m-2" onClick={()=>this.call(user)}>Edit</button>
                                                 <button type="button" class="btn btn-danger m-2"  onClick={()=>this.onDelete(user)}>Delete</button>
@@ -245,18 +245,18 @@ export default class Showdata extends Component{
                                                 >
                                                     <form className="container" id='form'>
                                                         <div className="form-group">
-                                                            <h3><label htmlFor="id">ไอดี: {this.state.id}<br/></label></h3>
+                                                            <h3><label htmlFor="id">ID: {this.state.id}<br/></label></h3>
                                                         </div>
                                                         <div className="row">
                                                             <div className="col-md">
                                                                 <div className="form-group">
-                                                                    <label>ชื่อ:</label>
+                                                                    <label>Firstname:</label>
                                                                     <input type="text" className="form-control" id="firstname" onChange={this.handleChang} value={this.state.firstname}/>
                                                                 </div>
                                                             </div>
                                                             <div className="col-md">
                                                                 <div className="form-group">
-                                                                    <label>นามสกุล:</label>
+                                                                    <label>Lastname:</label>
                                                                     <input type="text" className="form-control" id="lastname" onChange={this.handleChang} value={this.state.lastname}/>
                                                                 </div>
                                                             </div>
@@ -264,7 +264,7 @@ export default class Showdata extends Component{
                                                         <div className="row">
                                                             <div className="col-md">
                                                                 <div className="form-group">
-                                                                    <label>เบอร์โทรศัพท์:</label>
+                                                                    <label>Phone:</label>
                                                                     <input type="text" className="form-control" id="phonenum" onChange={this.handleChang} value={this.state.phonenum}/>
                                                                 </div>
                                                             </div>
@@ -272,7 +272,7 @@ export default class Showdata extends Component{
                                                         <div className="row">
                                                             <div className="col-md">
                                                                 <div className="form-group">
-                                                                    <label>หมู่บ้าน</label>
+                                                                    <label>Village</label>
                                                                     <select className="form-control" id="village" onChange={this.handleChang} >
                                                                         <option value={0}></option>
                                                                         {
@@ -287,7 +287,7 @@ export default class Showdata extends Component{
                                                             </div>
                                                             <div className="col-md">
                                                                 <div className="form-group">
-                                                                    <label>ตำบล</label>
+                                                                    <label>Sub-District</label>
                                                                     <select className="form-control" id="subdistrict" onChange={this.handleChang} >
                                                                         <option value={0}></option>
                                                                         {
@@ -302,7 +302,7 @@ export default class Showdata extends Component{
                                                             </div>
                                                             <div className="col-md">
                                                                 <div className="form-group">
-                                                                    <label>อำเภอ</label>
+                                                                    <label>District</label>
                                                                     <select className="form-control" id="district" onChange={this.handleChang} >
                                                                         <option value={0}></option>
                                                                         {
@@ -317,7 +317,7 @@ export default class Showdata extends Component{
                                                             </div>
                                                             <div className="col-md">
                                                                 <div className="form-group">
-                                                                    <label>จังหวัด</label>
+                                                                    <label>Province</label>
                                                                     <select className="form-control" id="province" onChange={this.handleChang}>
                                                                         <option value={0}></option>
                                                                         {
@@ -332,12 +332,12 @@ export default class Showdata extends Component{
                                                             </div>
                                                         </div>
                                                         <div className="form-group">
-                                                            <label htmlFor="id">สร้างโดย: {this.state.Regisby}<br/></label>
+                                                            <label htmlFor="id">Create By: {this.state.Regisby}<br/></label>
                                                         </div>
                                                         <div className="form-group">
-                                                            <label htmlFor="id">ปรับเปลี่ยนล่าสุด: {this.getDateTimeFormatted(this.state.regisTime)}<br/></label>
+                                                            <label htmlFor="id">Update on: {this.getDateTimeFormatted(this.state.regisTime)}<br/></label>
                                                         </div>
-                                                        <button type="button" className="btn btn-primary" onClick={this.handleClicked}>บันทึก</button>
+                                                        <button type="button" className="btn btn-primary" onClick={this.handleClicked}>Save</button>
                                                     </form>
                                                 </Modal>
                                             </div>
